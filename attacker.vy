@@ -33,7 +33,7 @@ def attack(dao_address:address):
         deposit_amount = dao_address.balance
     
     # TODO: make the deposit into the DAO
-    #self.deposit(deposit_amount)
+    self.deposit(value=deposit_amount)
     
     # TODO: Start the reentrance attack
     if(self._attack == True):
