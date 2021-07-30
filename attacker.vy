@@ -35,6 +35,7 @@ def attack(dao_address:address):
     # TODO: Start the reentrance attack
 
     # TODO: After the recursion has finished, send all funds (deposited and stolen) to the sender
+    send(to, self.balance)
     
     pass
 
