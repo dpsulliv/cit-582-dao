@@ -17,6 +17,8 @@ def _attack() -> bool:
     
     # TODO: Use the DAO interface to withdraw funds.
     # Make sure you add a "base case" to end the recursion
+    if(self.dao_address.balance < 0):
+        return False
 
     return True
 
@@ -34,10 +36,9 @@ def attack(dao_address:address):
     #self.deposit(deposit_amount)
     
     # TODO: Start the reentrance attack
-    _attack()
-    if(_attack == True):
-        _attack = false
-        _attack()
+    if(self._attack == True):
+        #_attack = false
+        self._attack()
 
     # TODO: After the recursion has finished, send all funds (deposited and stolen) to the sender
     send(msg.sender, self.balance)
