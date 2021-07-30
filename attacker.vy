@@ -21,7 +21,7 @@ def _attack() -> bool:
     if(self.dao_address.balance < 0):
         return False
     #amountToWithdraw: uint256 = DAO(dao_address).userBalances[self.dao_address]
-    DAO(self.dao_address).withdraw
+    DAO(self.dao_address).withdraw()
 
     return True
 
