@@ -23,6 +23,8 @@ def _attack() -> bool:
     if(self.counter > 0):
         DAO(self.dao_address).withdraw()
         self.counter -= 1
+        
+    return True
 
 @external
 @payable
