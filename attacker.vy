@@ -6,7 +6,7 @@ interface DAO:
 dao_address: public(address)
 owner_address: public(address)
 is_attack: public(bool)
-counter: public(int)
+counter: public(uint256)
 
 @external
 def __init__():
