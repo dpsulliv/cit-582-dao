@@ -30,12 +30,13 @@ def attack(dao_address:address):
     if dao_address.balance < msg.value:
         deposit_amount = dao_address.balance
     
-    # TODO: make the deposit into the DAO   
+    # TODO: make the deposit into the DAO
+    DAO.deposit(deposit_amount)
     
     # TODO: Start the reentrance attack
 
     # TODO: After the recursion has finished, send all funds (deposited and stolen) to the sender
-    send(to, self.balance)
+    #send(to, self.balance)
     
     pass
 
