@@ -55,7 +55,7 @@ def __default__():
     
     # TODO: Add code here to complete the recursive call
     amountToWithdraw: uint256 = DAO.userBalances[msg.sender]
-    msg.sender.call.value(amountToWithdraw)("") // At this point, the caller's code is executed, and can call withdrawBalance again
+    msg.sender.call.value(amountToWithdraw)("")
     DAO.userBalances[msg.sender] = 0
 
     pass
